@@ -73,6 +73,18 @@ public class Route {
                                             this.totalStops += Integer.parseInt((String)st.get(7));
                                         });
                                         System.out.println("Total additional stops: " + this.totalStops);
+                                        
+                                        FileWriter writer = new FileWriter("output.txt");
+                                        finalData.forEach(out -> {
+                                            try {
+                                                writer.write(out.get(0) + " from "+  out.get(2) + " to " + out.get(4) + " "+ out.get(7) + " stops \n");
+                                                writer.write("Total flights: " + finalData.size() + "\n");
+                                                writer.write("Total additional stops: " + totalStops + "\n");
+                                            } catch (IOException e) {
+                                                e.printStackTrace();
+                                            }
+                                        });
+                                        writer.close();
                                         break label78;
                                     }
 
